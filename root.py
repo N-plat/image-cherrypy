@@ -10,9 +10,6 @@ class Root(object):
         'tools.sessions.locking': 'explicit' #this and the acquire_lock and the release_lock statements in the login and logout functions are necessary so that multiple ajax requests can be processed in parallel in a single session
     }
 
-
-
     @cherrypy.expose
-    def index(self):
-
-        return ""
+    def index(self,filename):
+        return static.serve_file("/efs/ec2-user/images/"+filename)
